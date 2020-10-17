@@ -1,0 +1,19 @@
+language: python
+python:
+  - '3.7.3'
+
+sudo: required
+
+before_install:
+  - chmod +x ./trusty_monkey/manage.py
+before_script:
+  - pip install -r requirements.txt
+  - cd ./trusty_monkey/
+
+env: DJANGO_SETTINGS_MODULE="trusty_monkey.settings"
+
+services:
+  - postgresql
+
+script:
+  - python manage.py test --keepdb
