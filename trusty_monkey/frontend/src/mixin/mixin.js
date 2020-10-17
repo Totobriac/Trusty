@@ -48,6 +48,7 @@ export default {
         longitude: this.lng
       }        
       this.distance = haversine(this.start, this.end)
+      console.log(this.distance)
       if (this.distance < 0.2) {
         return true}
       else {return false}
