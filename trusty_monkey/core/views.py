@@ -1,0 +1,14 @@
+from django.views.generic.base import TemplateView
+from rest_framework.views import APIView
+from django.conf import settings
+
+class IndexTemplateView(TemplateView):
+
+    def get_template_names(self):
+        if not settings.DEBUG:
+            template_name = "index-dev.html"
+        else:
+            template_name = "index.html"
+        return template_name
+
+    

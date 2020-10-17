@@ -1,0 +1,1 @@
+web: gunicorn --pythonpath trusty_monkey trusty_monkey.wsgi
