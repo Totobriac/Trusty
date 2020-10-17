@@ -46,7 +46,8 @@ export default {
       if (this.image.exif != null) {
       console.log (this.image)
         if (this.image.exif.GPSLatitude) {
-          this.calculateCoordPicture();  
+          this.calculateCoordPicture()
+          console.log('done pavote')
           this.checkIfPicInRange()
           if(this.checkIfPicInRange()) {
             this.error = null
