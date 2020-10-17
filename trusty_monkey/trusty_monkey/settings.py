@@ -26,15 +26,15 @@ SECRET_KEY = '-jc7uv=+k#uv&ww&9^z@(!=49#rn7bxipp%2uagwjvcdkc&u19'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["trustymonkey.herokuapp.com", "127.0.0.1"]
-# ALLOWED_HOSTS = ["127.0.0.1"]
+ALLOWED_HOSTS = ["*"]
 
+CORS_ORIGIN_ALLOW_ALL = True
 
-from corsheaders.defaults import default_headers
+# from corsheaders.defaults import default_headers
 
-CORS_ALLOW_HEADERS = default_headers + (
-    'Access-Control-Allow-Origin',
-)
+# CORS_ALLOW_HEADERS = default_headers + (
+#     'Access-Control-Allow-Origin',
+# )
 
 # Application definition
 
@@ -61,6 +61,7 @@ INSTALLED_APPS = [
     'crispy_forms',    
     'drf_multiple_model',
     'webpack_loader',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -71,7 +72,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware'
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'trusty_monkey.urls'
@@ -98,24 +100,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'trusty_monkey.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/3.0/ref/settings/#databases
-
-# this url follow this pattern
-# postgres://user:pass@host:port/name
-
-# postgres://epwtfhegspivzw:1906a99f951de3883e3d7f02e500f46fdf57ec00f2d24ba3291c8deefa91f214@ec2-34-253-148-186.eu-west-1.compute.amazonaws.com:5432/de0a2fako4g5ak
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'd1ec5k7fj6s547',
-#         'USER': 'rfnfpfoizykrht',
-#         'PASSWORD': 'c8369cfc95c347070a236399830385e37ba4a98fca721acc90b0ffa684340e3a',
-#         'HOST': 'ec2-54-75-229-28.eu-west-1.compute.amazonaws.com',
-#         'PORT': '5432'
-#     }
-# }
 if 'test' in sys.argv:
     #Configuration for test database
     DATABASES = {
