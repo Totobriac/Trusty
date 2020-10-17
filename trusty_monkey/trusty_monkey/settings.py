@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+import sys
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -105,16 +106,47 @@ WSGI_APPLICATION = 'trusty_monkey.wsgi.application'
 
 # postgres://epwtfhegspivzw:1906a99f951de3883e3d7f02e500f46fdf57ec00f2d24ba3291c8deefa91f214@ec2-34-253-148-186.eu-west-1.compute.amazonaws.com:5432/de0a2fako4g5ak
 
-DATABASES = {
-    'default': {
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'd1ec5k7fj6s547',
+#         'USER': 'rfnfpfoizykrht',
+#         'PASSWORD': 'c8369cfc95c347070a236399830385e37ba4a98fca721acc90b0ffa684340e3a',
+#         'HOST': 'ec2-54-75-229-28.eu-west-1.compute.amazonaws.com',
+#         'PORT': '5432'
+#     }
+# }
+if 'test' in sys.argv:
+    #Configuration for test database
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'd27r33abt8uhfh',
+            'USER': 'ijadhpdyufvbvg',
+            'PASSWORD': 'a088e0ba27863a09a8463cae923ef4e595303c07f5a632020d71e0ddcf18073b',
+            'HOST': 'ec2-54-246-115-40.eu-west-1.compute.amazonaws.com',
+            'PORT': 5432,
+            'TEST': {
+                'NAME': 'd27r33abt8uhfh', #This is an important entry
+            }
+        }
+    }
+else:
+  #Default configuration
+    DATABASES = {
+        'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'd1ec5k7fj6s547',
         'USER': 'rfnfpfoizykrht',
         'PASSWORD': 'c8369cfc95c347070a236399830385e37ba4a98fca721acc90b0ffa684340e3a',
         'HOST': 'ec2-54-75-229-28.eu-west-1.compute.amazonaws.com',
-        'PORT': '5432'
+        'PORT': '5432',
+        'TEST': {
+                'NAME': 'd1ec5k7fj6s547', #This is an important entry
+            }
+        }
     }
-}
+    
 
 
 # Password validation
