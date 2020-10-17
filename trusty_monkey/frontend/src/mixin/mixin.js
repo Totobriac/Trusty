@@ -36,8 +36,8 @@ export default {
               + (longitudes[2] / 3600)
       this.lat = lat
       this.lng = lng
-      return (this.lat, this.lng)
       console.log(this.lat, this.lng)
+      return (this.lat, this.lng)      
     },
     checkIfPicInRange () {
       this.start = {
