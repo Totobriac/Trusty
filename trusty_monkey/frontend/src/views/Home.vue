@@ -48,6 +48,7 @@
 <script>
 import { apiService } from "@/common/api.service.js";
 import ReviewDetail from "@/components/ReviewDetail.vue";
+import { store } from "../common/store.js";
 
 export default {
   name: "home",
@@ -83,6 +84,8 @@ export default {
       apiService(endpoint)
         .then(resp=> {
           console.log(resp)
+          store.setRestLat(resp.restLat)      
+          store.setRestLng(resp.restLng)
           this.$router.push({ name: "rest_reviews", 
                   params: { maps: resp.maps,
                             name: resp.name,
