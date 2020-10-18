@@ -26,6 +26,7 @@
               class="btn btn-sm btn-success mt-2 mr-2"
             >Horaires et Accés</button>
           </div>
+
           <div>
             <button
               v-show="showEditor== false"
@@ -39,6 +40,7 @@
               @click="deleteReview"
             >Annuler la Review</button>
           </div>
+
         </div>
       </div>
 
@@ -183,15 +185,18 @@ export default {
       return `${url}?${params}`
     }
   },
-
   methods: {
-
+    
     getReviews() {
       let endpoint = `/api/rest_review/${this.maps}/`;     
       apiService(endpoint).then(data => {
         this.reviews.push(...data)       
       });
     },
+    login() {
+      window.localStorage.removeItem("username");         
+      window.location.replace(vueconfig.baseUrl + "/accounts/login/")
+    }, 
 
     addRestaurant() {           
       this.storeState.pictures = []

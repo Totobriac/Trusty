@@ -63,7 +63,8 @@ export default {
       this.placeResultData = placeResultData;
       console.log(this.placeResultData)    
       this.lat = this.placeResultData.geometry.location.lat(),
-      this.lng = this.placeResultData.geometry.location.lng(),        
+      this.lng = this.placeResultData.geometry.location.lng(),
+      console.log(this.lat, this.lng)      
       store.setRestLat(this.lat)      
       store.setRestLng(this.lng)
       
