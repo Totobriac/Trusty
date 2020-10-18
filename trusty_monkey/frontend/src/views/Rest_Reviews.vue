@@ -31,7 +31,7 @@
             <button
               v-show="showEditor== false"
               class="btn btn-sm btn-primary mt-2 mr-2"
-              @click="click()"
+              @click="click"
             >Ajouter une Review</button>
 
             <button
