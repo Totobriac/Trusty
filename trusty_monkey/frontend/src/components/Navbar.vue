@@ -33,6 +33,7 @@ import VueGoogleAutocomplete from "vue-google-autocomplete";
 import { store } from "../common/store.js";
 import vueconfig from "../vueconfig.js";
 
+
 const baseUrl = vueconfig.baseUrl;
 
 export default {
@@ -48,7 +49,7 @@ export default {
     isLoggedIn() {
       console.log(window.localStorage.getItem("username"))    
       return window.localStorage.getItem("username");      
-    }
+    }    
   },   
   methods: {
     login() {

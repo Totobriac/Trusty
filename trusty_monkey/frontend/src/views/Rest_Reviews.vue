@@ -184,7 +184,11 @@ export default {
       });
       console.log(`${url}?${params}`)
       return `${url}?${params}`
-    }
+    },
+    isLoggedIn() {
+      console.log(window.localStorage.getItem("username"))    
+      return window.localStorage.getItem("username");      
+    }  
   },
   methods: {
     

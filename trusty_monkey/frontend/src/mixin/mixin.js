@@ -17,7 +17,7 @@ export default {
       return store.state;
    }
   },
-  methods: {
+  methods: {    
     calculateCoordPicture() {     
       var latitudes = []
       var longitudes = []
