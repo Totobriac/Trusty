@@ -39,7 +39,7 @@ export default {
   },
   methods: {
     setImage: function(output) {
-      store.setPreloader()
+      store.setPreloader(1)
       this.storeState.upError = "Nos ingénieurs inspectent votre photo."
       this.hasImage = true;
       this.image = output;

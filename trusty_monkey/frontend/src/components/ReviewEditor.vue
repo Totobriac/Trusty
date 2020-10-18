@@ -8,7 +8,7 @@
 
   <div>
 
-  <div class="container text-center" v-show="this.storeState.preLoader">
+  <div class="container text-center" v-show="this.storeState.preLoader == 1">
     <div>
       <img src="https://media.giphy.com/media/pFwRzOLfuGHok/giphy.gif" class="w-25">
     </div>   
@@ -18,7 +18,7 @@
     <div class="btnRow d-flex flex-row justify-content-around">
       <div class="mt-3" v-for="(buttonPic, index) in buttonPics" :key="buttonPic">
 
-        <label for="fileInput" @click="upex=index, setUpUrl(), this.storeState.upError = null"
+        <label for="fileInput" @click="upex=index, setUpUrl(), this.storeState.upError = null, store.setPreloader(0)"
               class="catBtn border border-success rounded p-2"
         >{{ buttonPic }} <Resize/> </label>
       </div>

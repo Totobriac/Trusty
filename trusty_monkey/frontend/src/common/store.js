@@ -7,7 +7,7 @@ export const store = {
       file: null,      
       showCatBut: true,
       upError: null,
-      preLoader: false,
+      preLoader: null,
       picShow: null,
     },
     addPicture(newPicture) {      
@@ -34,8 +34,8 @@ export const store = {
     setUpError(error) {
       this.state.upError = error 
     },
-    setPreloader() {
-      this.state.preLoader = !this.state.preLoader
+    setPreloader(int) {
+      this.state.preLoader = int
     },
     setPicShow(index) {
       this.state.picShow = index
