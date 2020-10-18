@@ -182,6 +182,7 @@ export default {
         maptype: "terrain",
         key: "AIzaSyCGmIAISNa4W8KK24eXmH-ly_5k_vpAsos"
       });
+      console.log(`${url}?${params}`)
       return `${url}?${params}`
     }
   },
