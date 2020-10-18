@@ -44,10 +44,12 @@ export default {
         latitude: this.storeState.restLat,
         longitude: this.storeState.restLng,        
       }
+      console.log(this.start)
       this.end = {
         latitude: this.lat,
         longitude: this.lng
-      }        
+      }  
+      console.log(this.end)      
       this.distance = haversine(this.start, this.end)
       console.log(this.distance)
       if (this.distance < 0.2) {
