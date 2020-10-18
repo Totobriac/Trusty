@@ -31,7 +31,7 @@
             <button
               v-show="showEditor== false"
               class="btn btn-sm btn-primary mt-2 mr-2"
-              @click="addRestaurant(), showTheEditor()"
+              @click="click()"
             >Ajouter une Review</button>
 
             <button
@@ -191,7 +191,13 @@ export default {
     }  
   },
   methods: {
-    
+    click() {
+      if (window.localStorage.getItem("username") != null) {
+        this.addRestaurant(), this.showTheEditor()
+      } else {
+        this.login()
+      }
+    },
     getReviews() {
       let endpoint = `/api/rest_review/${this.maps}/`;     
       apiService(endpoint).then(data => {
