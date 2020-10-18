@@ -205,7 +205,7 @@ export default {
       });
     },
     login() {
-      window.localStorage.removeItem("username");         
+      window.localStorage.setItem("username", "toto");         
       window.location.replace(vueconfig.baseUrl + "/accounts/login/")
     }, 
 
