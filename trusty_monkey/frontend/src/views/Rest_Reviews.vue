@@ -192,7 +192,7 @@ export default {
   },
   methods: {
     click() {
-      if (window.localStorage.getItem("username") != null) {
+      if (window.localStorage.getItem("username")) {
         this.addRestaurant(), this.showTheEditor()
       } else {
         this.login()
