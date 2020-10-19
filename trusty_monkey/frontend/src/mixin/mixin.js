@@ -73,7 +73,8 @@ export default {
         }]
       }
       axios.post(`https://vision.googleapis.com/v1/images:annotate?key=${this.apiKey}`, axiosConfig)
-        .then(response => {    
+        .then(response => {
+          console.log(response)   
           this.storeState.labels = []      
           let slicedLabelArray = response.data.responses[0].labelAnnotations.slice(0,-1)
           slicedLabelArray.forEach(function(label) {
