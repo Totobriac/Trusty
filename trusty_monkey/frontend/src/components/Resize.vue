@@ -8,7 +8,7 @@
         :debug="1"
         :quality="1"
         doNotResize="gif"
-        :autoRotate=true
+        :autoRotate="false"
         outputFormat="verbose"
         @input="setImage"
         >   
