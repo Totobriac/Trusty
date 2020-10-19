@@ -72,7 +72,7 @@ export default {
   },  
   methods: {
     onUpload() {
-      console.log(this.upUrlArray)
+      
       if (this.storeState.labels) { 
         this.selectedFile = this.storeState.file            
         const fd = new FormData();
