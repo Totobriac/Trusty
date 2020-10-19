@@ -2,13 +2,13 @@
   <div class="container" style="text-align: center">   
     <div class="my-8">
       <image-uploader
-        :preview="false"
+        :preview=false
         :className="['fileinput', { 'fileinput--loaded': hasImage }]"
         capture="environment"
         :debug="1"
         :quality="1"
         doNotResize="gif"
-        :autoRotate="true"
+        :autoRotate=true
         outputFormat="verbose"
         @input="setImage"
         >   
@@ -46,8 +46,7 @@ export default {
       if (this.image.exif != null) {
       console.log (this.image)
         if (this.image.exif.GPSLatitude) {
-          this.calculateCoordPicture()
-          console.log('done pavote')
+          this.calculateCoordPicture()          
           this.checkIfPicInRange()
           if(this.checkIfPicInRange()) {
             this.error = null
