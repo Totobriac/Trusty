@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
 
     'storages',
-    
+
     'places',
     'users',
     'rest_framework',
@@ -50,7 +50,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
 
-    'crispy_forms',    
+    'crispy_forms',
     'drf_multiple_model',
     'webpack_loader',
     'corsheaders',
@@ -93,7 +93,6 @@ WSGI_APPLICATION = 'trusty_monkey.wsgi.application'
 
 
 if 'test' in sys.argv:
-    #Configuration for test database
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
@@ -103,30 +102,24 @@ if 'test' in sys.argv:
             'HOST': 'ec2-54-246-115-40.eu-west-1.compute.amazonaws.com',
             'PORT': 5432,
             'TEST': {
-                'NAME': 'd27r33abt8uhfh', #This is an important entry
+                'NAME': 'd27r33abt8uhfh',
             }
         }
     }
 else:
-  #Default configuration
     DATABASES = {
         'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'd1ec5k7fj6s547',
-        'USER': 'rfnfpfoizykrht',
-        'PASSWORD': 'c8369cfc95c347070a236399830385e37ba4a98fca721acc90b0ffa684340e3a',
-        'HOST': 'ec2-54-75-229-28.eu-west-1.compute.amazonaws.com',
-        'PORT': '5432',
-        'TEST': {
-                'NAME': 'd1ec5k7fj6s547', #This is an important entry
-            }
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'd1ec5k7fj6s547',
+            'USER': 'rfnfpfoizykrht',
+            'PASSWORD': 'c8369cfc95c347070a236399830385e37ba4a98fca721acc90b0ffa684340e3a',
+            'HOST': 'ec2-54-75-229-28.eu-west-1.compute.amazonaws.com',
+            'PORT': '5432',
+            'TEST': {
+                    'NAME': 'd1ec5k7fj6s547',
+                }
         }
     }
-    
-
-
-# Password validation
-# https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -181,12 +174,12 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.TokenAuthentication',
         'rest_framework.authentication.SessionAuthentication'
-    ),    
+    ),
 }
 
 
 CRISPY_TEMPLATE_PACK = "bootstrap4"
-LOGIN_URL ="accounts/login/"
+LOGIN_URL = "accounts/login/"
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
 

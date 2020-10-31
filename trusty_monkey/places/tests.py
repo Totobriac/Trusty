@@ -143,30 +143,30 @@ class AddPicsTest(APITestCase):
 
     def test_add_menu_pic(self):
         self.data = {"restaurant_review": self.restaurant_review.id,
-                      "picture_1": SimpleUploadedFile(
+                     "picture_1": SimpleUploadedFile(
                         name='menu_pic.jpg',
                         content=open("./staticfiles/banane_seule.jpg",
-                                      'rb').read(),
+                                     'rb').read(),
                         content_type='image/jpeg')}
         response = self.client.post("/api/menu_pic/", data=self.data)
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
     def test_add_outside_pic(self):
         self.data = {"restaurant_review": self.restaurant_review.id,
-                      "picture_1": SimpleUploadedFile(
+                     "picture_1": SimpleUploadedFile(
                         name='outside_pic.jpg',
                         content=open("./staticfiles/banane_seule.jpg",
-                                      'rb').read(),
+                                     'rb').read(),
                         content_type='image/jpeg')}
         response = self.client.post("/api/outside_pic/", data=self.data)
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
     def test_add_inside_pic(self):
         self.data = {"restaurant_review": self.restaurant_review.id,
-                    "picture_1": SimpleUploadedFile(
+                     "picture_1": SimpleUploadedFile(
                         name='inside_pic.jpg',
                         content=open("./staticfiles/banane_seule.jpg",
-                                      'rb').read(),
+                                     'rb').read(),
                         content_type='image/jpeg')}
         response = self.client.post("/api/inside_pic/", data=self.data)
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
@@ -291,6 +291,3 @@ class GetPicsTest(APITestCase):
         self.data = {"restaurant_review": self.restaurant_review.id}
         response = self.client.get("/api/inside_pic/", data=self.data)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-
-
-
