@@ -96,13 +96,13 @@ if 'test' in sys.argv:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'd27r33abt8uhfh',
-            'USER': 'ijadhpdyufvbvg',
-            'PASSWORD': 'a088e0ba27863a09a8463cae923ef4e595303c07f5a632020d71e0ddcf18073b',
-            'HOST': 'ec2-54-246-115-40.eu-west-1.compute.amazonaws.com',
+            'NAME': 'dc7b27alpf1j1e',
+            'USER': 'nvgdpqbahfnsdl',
+            'PASSWORD': 'a074e5666a74e35ea07c4d4df6b54b06669e01b770f73f22b354725f00031821',
+            'HOST': 'ec2-3-248-4-172.eu-west-1.compute.amazonaws.com',
             'PORT': 5432,
             'TEST': {
-                'NAME': 'd27r33abt8uhfh',
+                'NAME': 'dc7b27alpf1j1e',
             }
         }
     }
