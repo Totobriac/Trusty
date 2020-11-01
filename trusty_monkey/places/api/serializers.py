@@ -6,13 +6,18 @@ from django.contrib.auth.models import User
 from rest_framework import serializers
 from django.db.models import Q
 
-
+"""
+Serializer for restaurant instance
+"""
 class RestaurantIdSerializer(serializers.ModelSerializer):
     class Meta:
         model = Restaurant
         fields = '__all__'
 
 
+"""
+Serializer for restaurant reviews when GET method is used
+"""
 class RestaurantReviewGETSerializer(serializers.ModelSerializer):
     restaurant_name = serializers.CharField(source='maps.name',
                                             read_only=True)
@@ -30,12 +35,18 @@ class RestaurantReviewGETSerializer(serializers.ModelSerializer):
         return instance.created_at.strftime("%d %B, %Y")
 
 
+"""
+Serializer for restaurant reviews for any except GET method is used
+"""
 class RestaurantReviewSerializer(serializers.ModelSerializer):
     class Meta:
         model = RestaurantReview
         field = fields = '__all__'
 
 
+"""
+Serializer for starter pics model
+"""
 class StarterPicsSerializer(serializers.ModelSerializer):
     class Meta:
         model = StarterPic
@@ -49,6 +60,9 @@ class StarterPicsSerializer(serializers.ModelSerializer):
         return value
 
 
+"""
+Serializer for main course pics model
+"""
 class MainPicsSerializer(serializers.ModelSerializer):
     class Meta:
         model = MainPic
@@ -62,6 +76,9 @@ class MainPicsSerializer(serializers.ModelSerializer):
         return value
 
 
+"""
+Serializer for dessert pics model
+"""
 class DessertPicsSerializer(serializers.ModelSerializer):
     class Meta:
         model = DessertPic
@@ -75,6 +92,9 @@ class DessertPicsSerializer(serializers.ModelSerializer):
         return value
 
 
+"""
+Serializer for menu pics model
+"""
 class MenuPicsSerializer(serializers.ModelSerializer):
     class Meta:
         model = MenuPic
@@ -88,6 +108,9 @@ class MenuPicsSerializer(serializers.ModelSerializer):
         return value
 
 
+"""
+Serializer for outside pics model
+"""
 class OutsidePicsSerializer(serializers.ModelSerializer):
     class Meta:
         model = OutsidePic
@@ -101,6 +124,9 @@ class OutsidePicsSerializer(serializers.ModelSerializer):
         return value
 
 
+"""
+Serializer for inside  pics model
+"""
 class InsidePicsSerializer(serializers.ModelSerializer):
     class Meta:
         model = InsidePic

@@ -6,13 +6,13 @@
         :className="['fileinput', { 'fileinput--loaded': hasImage }]"
         capture="environment"
         :debug="1"
-        :quality="1"
+        :quality="0.9"
         doNotResize="gif"
         :autoRotate="false"
         outputFormat="verbose"
         @input="setImage"
         >   
-      </image-uploader>          
+      </image-uploader>  
     </div>    
   </div>
 </template>
@@ -38,19 +38,31 @@ export default {
     }
   },
   methods: {
+    /*
+    Function that is triggered when a picture is selete for upload.    
+    */
     setImage: function(output) {
       store.setPreloader(1)
-      this.storeState.upError = "Nos ingénieurs inspectent votre photo."
-      this.hasImage = true;
+      this.storeState.upError = "Nos ingénieurs inspectent votre photo."      
       this.image = output;
+      // Check if picture as exif data
       if (this.image.exif != null) {
-      console.log (this.image)
+        // Check if picture as exif GPS data    
         if (this.image.exif.GPSLatitude) {
-          this.calculateCoordPicture()          
+          // Calculate the picture CPS coordinates
+          this.calculateCoordPicture()
+          // Check if picture coordinates are the same as the selected restaurant       
           this.checkIfPicInRange()
           if(this.checkIfPicInRange()) {
             this.error = null
-            this.checkImageLabels()                               
+            /*
+            Check if the pictures labels from Google Vison 
+            do correspond with  the selected category
+            */
+            this.checkImageLabels()
+            /*
+            Convert base 64 image into jpeg format
+            */                              
             this.imageConversion()                    
           } else {store.setUpError("Votre photo ne semble pas avoir été prise dans ce restaurant")
                   store.setShowCatBut()}

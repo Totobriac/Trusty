@@ -36,6 +36,9 @@ class RestaurantReviewViewset(viewsets.ModelViewSet):
         serializer.save(review_author=self.request.user)
 
 
+"""
+Retrieve all the reviews from a single restaurant
+"""
 class RestaurantReviewListAPIView(generics.ListAPIView):
     def get_queryset(self):
         kwarg_maps = self.kwargs.get('maps')
@@ -49,42 +52,63 @@ class RestaurantReviewListAPIView(generics.ListAPIView):
             return serializers.RestaurantReviewSerializer
 
 
+"""
+Retrieve all the starter pictures 
+"""
 class StarterPicsViewset(viewsets.ModelViewSet):
     queryset = models.StarterPic.objects.all()
     serializer_class = serializers.StarterPicsSerializer
     permission_classes = [IsAuthenticatedOrReadOnly, IsOwnReviewOrReadOnly]
 
 
+"""
+Retrieve all the main course pictures 
+"""
 class MainPicsViewset(viewsets.ModelViewSet):
     queryset = models.MainPic.objects.all()
     serializer_class = serializers.MainPicsSerializer
     permission_classes = [IsAuthenticatedOrReadOnly, IsOwnReviewOrReadOnly]
 
 
+"""
+Retrieve all the dessert pictures 
+"""
 class DessertPicsViewset(viewsets.ModelViewSet):
     queryset = models.DessertPic.objects.all()
     serializer_class = serializers.DessertPicsSerializer
     permission_classes = [IsAuthenticatedOrReadOnly, IsOwnReviewOrReadOnly]
 
 
+"""
+Retrieve all the menu pictures 
+"""
 class MenuPicsViewset(viewsets.ModelViewSet):
     queryset = models.MenuPic.objects.all()
     serializer_class = serializers.MenuPicsSerializer
     permission_classes = [IsAuthenticatedOrReadOnly, IsOwnReviewOrReadOnly]
 
 
+"""
+Retrieve all the utside pictures 
+"""
 class OutsidePicsViewset(viewsets.ModelViewSet):
     queryset = models.OutsidePic.objects.all()
     serializer_class = serializers.OutsidePicsSerializer
     permission_classes = [IsAuthenticatedOrReadOnly, IsOwnReviewOrReadOnly]
 
 
+"""
+Retrieve all the inside pictures 
+"""
 class InsidePicsViewset(viewsets.ModelViewSet):
     queryset = models.InsidePic.objects.all()
     serializer_class = serializers.InsidePicsSerializer
     permission_classes = [IsAuthenticatedOrReadOnly, IsOwnReviewOrReadOnly]
 
 
+"""
+Retrieve all the reviews from a single user
+"""
 class UserReviewListAPIView(generics.ListAPIView):
     serializer_class = serializers.RestaurantReviewSerializer
 
@@ -94,6 +118,9 @@ class UserReviewListAPIView(generics.ListAPIView):
                                 review_author=kwarg_user)
 
 
+"""
+Retrieve all the starter pictures from a single user
+"""
 class UserSarterPicsListAPIView(generics.ListAPIView):
     serializer_class = serializers.StarterPicsSerializer
 
@@ -103,6 +130,9 @@ class UserSarterPicsListAPIView(generics.ListAPIView):
                                 restaurant_review__review_author=kwarg_user)
 
 
+"""
+Retrieve all the main course pictures from a single user
+"""
 class UserMainPicsListAPIView(generics.ListAPIView):
     serializer_class = serializers.MainPicsSerializer
 
@@ -112,6 +142,9 @@ class UserMainPicsListAPIView(generics.ListAPIView):
                                 restaurant_review__review_author=kwarg_user)
 
 
+"""
+Retrieve all the dessert pictures from a single user
+"""
 class UserDessertPicsListAPIView(generics.ListAPIView):
     serializer_class = serializers.DessertPicsSerializer
 
@@ -121,6 +154,9 @@ class UserDessertPicsListAPIView(generics.ListAPIView):
                                 restaurant_review__review_author=kwarg_user)
 
 
+"""
+Retrieve all the menu pictures from a single user
+"""
 class UserMenuPicsListAPIView(generics.ListAPIView):
     serializer_class = serializers.MenuPicsSerializer
 
@@ -130,6 +166,9 @@ class UserMenuPicsListAPIView(generics.ListAPIView):
                                 restaurant_review__review_author=kwarg_user)
 
 
+"""
+Retrieve all the outside pictures from a single user
+"""
 class UserOutsidePicsListAPIView(generics.ListAPIView):
     serializer_class = serializers.OutsidePicsSerializer
 
@@ -139,6 +178,9 @@ class UserOutsidePicsListAPIView(generics.ListAPIView):
                                 restaurant_review__review_author=kwarg_user)
 
 
+"""
+Retrieve all the inside pictures from a single user
+"""
 class UserInsidePicsListAPIView(generics.ListAPIView):
     serializer_class = serializers.InsidePicsSerializer
 
@@ -148,6 +190,9 @@ class UserInsidePicsListAPIView(generics.ListAPIView):
                                 restaurant_review__review_author=kwarg_user)
 
 
+"""
+Retrieve all the starter pictures from a single restaurant
+"""
 class RestaurantStarterPicsListAPIView(generics.ListAPIView):
     serializer_class = serializers.StarterPicsSerializer
 
@@ -157,6 +202,9 @@ class RestaurantStarterPicsListAPIView(generics.ListAPIView):
                                 restaurant_review__maps=kwarg_maps)
 
 
+"""
+Retrieve all the main course pictures from a single restaurant
+"""
 class RestaurantMainPicsListAPIView(generics.ListAPIView):
     serializer_class = serializers.MainPicsSerializer
 
@@ -166,6 +214,9 @@ class RestaurantMainPicsListAPIView(generics.ListAPIView):
                                 restaurant_review__maps=kwarg_maps)
 
 
+"""
+Retrieve all the dessert pictures from a single restaurant
+"""
 class RestaurantDessertPicsListAPIView(generics.ListAPIView):
     serializer_class = serializers.DessertPicsSerializer
 
@@ -175,6 +226,9 @@ class RestaurantDessertPicsListAPIView(generics.ListAPIView):
                                 restaurant_review__maps=kwarg_maps)
 
 
+"""
+Retrieve all the menu pictures from a single restaurant
+"""
 class RestaurantMenuPicsListAPIView(generics.ListAPIView):
     serializer_class = serializers.MenuPicsSerializer
 
@@ -184,6 +238,9 @@ class RestaurantMenuPicsListAPIView(generics.ListAPIView):
                                 restaurant_review__maps=kwarg_maps)
 
 
+"""
+Retrieve all the outside pictures from a single restaurant
+"""
 class RestaurantOutsidePicsListAPIView(generics.ListAPIView):
     serializer_class = serializers.OutsidePicsSerializer
 
@@ -193,6 +250,9 @@ class RestaurantOutsidePicsListAPIView(generics.ListAPIView):
                                 restaurant_review__maps=kwarg_maps)
 
 
+"""
+Retrieve all the inside pictures from a single restaurant
+"""
 class RestaurantInsidePicsListAPIView(generics.ListAPIView):
     serializer_class = serializers.InsidePicsSerializer
 
@@ -202,6 +262,9 @@ class RestaurantInsidePicsListAPIView(generics.ListAPIView):
                                 restaurant_review__maps=kwarg_maps)
 
 
+"""
+Retrieve all the pictures from all the reviews
+"""
 class AllEveryRestPicturesAPIView(FlatMultipleModelAPIView):
     querylist = [
         {'queryset': models.StarterPic.objects.all(),
@@ -219,6 +282,9 @@ class AllEveryRestPicturesAPIView(FlatMultipleModelAPIView):
     ]
 
 
+"""
+Retrieve all the pictures from one selected user
+"""
 class AllUserPicturesAPIView(FlatMultipleModelAPIView):
 
     def get_querylist(self):
@@ -248,6 +314,9 @@ class AllUserPicturesAPIView(FlatMultipleModelAPIView):
         return querylist
 
 
+"""
+Retrieve all the pictures from one select restaurant
+"""
 class AllSingleRestPicturesAPIView(FlatMultipleModelAPIView):
 
     def get_querylist(self):
@@ -256,7 +325,7 @@ class AllSingleRestPicturesAPIView(FlatMultipleModelAPIView):
         querylist = (
             {'queryset': models.StarterPic.objects.filter(
                 restaurant_review__maps=kwarg_maps),
-             'serializer_class': serializers.StarterPicsSerializer},
+             'serializeall the reviewsr_class': serializers.StarterPicsSerializer},
             {'queryset': models.MainPic.objects.filter(
                 restaurant_review__maps=kwarg_maps),
              'serializer_class': serializers.MainPicsSerializer},
@@ -264,7 +333,7 @@ class AllSingleRestPicturesAPIView(FlatMultipleModelAPIView):
                 restaurant_review__maps=kwarg_maps),
              'serializer_class': serializers.DessertPicsSerializer},
             {'queryset': models.MenuPic.objects.filter(
-                restaurant_review__maps=kwarg_maps),
+                restauraall the reviewsnt_review__maps=kwarg_maps),
              'serializer_class': serializers.MenuPicsSerializer},
             {'queryset': models.OutsidePic.objects.filter(
                 restaurant_review__maps=kwarg_maps),
@@ -277,6 +346,9 @@ class AllSingleRestPicturesAPIView(FlatMultipleModelAPIView):
         return querylist
 
 
+"""
+Retrieve all the pictures from a single review
+"""
 class AllReviewPicturesAPIView(FlatMultipleModelAPIView):
 
     def get_querylist(self):
@@ -293,7 +365,7 @@ class AllReviewPicturesAPIView(FlatMultipleModelAPIView):
                 restaurant_review=kwarg_review),
              'serializer_class': serializers.DessertPicsSerializer},
             {'queryset': models.MenuPic.objects.filter(
-                restaurant_review=kwarg_review),
+                restauraall the reviewsnt_review=kwarg_review),
              'serializer_class': serializers.MenuPicsSerializer},
             {'queryset': models.OutsidePic.objects.filter(
                 restaurant_review=kwarg_review),

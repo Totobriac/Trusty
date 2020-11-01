@@ -82,8 +82,7 @@ export default {
     getDetails(maps) {
       let endpoint = `/api/restaurant/${maps}/`
       apiService(endpoint)
-        .then(resp=> {
-          console.log(resp)
+        .then(resp=> {          
           store.setRestLat(resp.restLat)      
           store.setRestLng(resp.restLng)
           this.$router.push({ name: "rest_reviews", 

@@ -11,7 +11,9 @@ from .models import (DessertPic, InsidePic,
                      MainPic, MenuPic, OutsidePic,
                      Restaurant, RestaurantReview, StarterPic)
 
-
+"""
+Testing if user can create an account
+"""
 class RegistrationTestCase(APITestCase):
 
     def test_registration(self):
@@ -22,7 +24,9 @@ class RegistrationTestCase(APITestCase):
         self.assertEqual(User.objects.count(), 1)
         self.assertEqual(User.objects.get().username, "TotoBriac")
 
-
+"""
+Testing if a restaurant can be created from Google Places API data
+"""
 class CreateRestaurantTest(APITestCase):
 
     def setUp(self):
@@ -54,7 +58,9 @@ class CreateRestaurantTest(APITestCase):
         self.assertEqual(Restaurant.objects.get().restLng, 0.1)
         self.assertEqual(Restaurant.objects.get().adress, "21 grande rue")
 
-
+"""
+Testing if a review can be created from an existing restaurant
+"""
 class CreateReviewTest(APITestCase):
 
     def setUp(self):
@@ -83,7 +89,9 @@ class CreateReviewTest(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(RestaurantReview.objects.count(), 1)
 
-
+"""
+Testing if a picture can be uploaded in a review in any category
+"""
 class AddPicsTest(APITestCase):
 
     def setUp(self):
@@ -171,7 +179,9 @@ class AddPicsTest(APITestCase):
         response = self.client.post("/api/inside_pic/", data=self.data)
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
-
+"""
+Testing if a picture can be retrieved from any category in a review
+"""
 class GetPicsTest(APITestCase):
 
     def setUp(self):

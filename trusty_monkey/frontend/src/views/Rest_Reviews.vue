@@ -173,6 +173,7 @@ export default {
   },
 
   computed: {
+    // Generate a map with Google Maps API using the restautant lng & lat
     mapUrl() {
       const url = "https://maps.googleapis.com/maps/api/staticmap";
       const params = new URLSearchParams({
@@ -185,6 +186,7 @@ export default {
       console.log(`${url}?${params}`)
       return `${url}?${params}`
     },
+    // Check if the user is LoggedIn
     isLoggedIn() {
       console.log(window.localStorage.getItem("username"))    
       return window.localStorage.getItem("username");      
@@ -198,6 +200,7 @@ export default {
         this.login()
       }
     },
+    // Get all the reviews from a selected restaurant 
     getReviews() {
       let endpoint = `/api/rest_review/${this.maps}/`;     
       apiService(endpoint).then(data => {
@@ -208,7 +211,7 @@ export default {
       window.localStorage.setItem("username", "toto");         
       window.location.replace(vueconfig.baseUrl + "/accounts/login/")
     }, 
-
+    // POST a restaurant instance
     addRestaurant() {           
       this.storeState.pictures = []
       let endpoint = `/api/restaurant/`;
@@ -230,7 +233,7 @@ export default {
         })
         .catch(error => console.log(error));
       },
-
+    // POST a review instance
     addReview() {      
       let endpoint = `/api/restaurant_review/`;
       let method = "POST";
@@ -245,14 +248,14 @@ export default {
     showTheEditor() {
       this.showEditor = true
     },
-
+    // DELETE the review
     deleteReview() {
       let endpoint = `/api/restaurant_review/${this.review_id}/`;
       let method = "DELETE";
       apiService(endpoint, method);
       this.$router.push({ name: "home" });
     },
-
+    // GET all the pictures of a restaurant in a selected category
     showCatPic() {
       this.storeState.picShow = null
       this.picEndpoint = "all_single_rest_pics"
@@ -271,8 +274,7 @@ export default {
               this.picEndpoint = "rest_inside_pic"}      
               
       axios.get(`${vueconfig.baseUrl}/api/${this.picEndpoint}/${this.$route.params.maps}/`)
-        .then (data => {
-          console.log(data.data)
+        .then (data => {          
           this.picByCat = data.data          
         })
     }

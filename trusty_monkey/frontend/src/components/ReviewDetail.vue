@@ -46,6 +46,7 @@ export default {
     }
   },
   methods: {
+    // Get all the pics from a review
     getPictures() {
       let endpoint = `/api/every_review_pics/${this.id}/`;            
       apiService(endpoint)        

@@ -1,5 +1,9 @@
 from rest_framework import permissions
 
+"""
+Check if the request user is the review author
+"""
+
 
 class IsOwnReviewOrReadOnly(permissions.BasePermission):
 

@@ -17,7 +17,8 @@ export default {
       return store.state;
    }
   },
-  methods: {    
+  methods: {
+    // Calculate the picture coordinates from the exif file 
     calculateCoordPicture() {     
       var latitudes = []
       var longitudes = []
@@ -35,31 +36,33 @@ export default {
               + (longitudes[1] / 60)
               + (longitudes[2] / 3600)
       this.lat = lat
-      this.lng = lng
-      console.log(this.lat, this.lng)
+      this.lng = lng      
       return (this.lat, this.lng)      
     },
+    /*
+    Calculate the distance beetween the coordinates of the selected picture
+    and the coordinates of the restaurant 
+    */ 
     checkIfPicInRange () {
       this.start = {
         latitude: this.storeState.restLat,
         longitude: this.storeState.restLng,        
-      }
-      console.log(this.start)
+      }      
       this.end = {
         latitude: this.lat,
         longitude: this.lng
-      }  
-      console.log(this.end)      
-      this.distance = haversine(this.start, this.end)
-      console.log(this.distance)
+      }
+      // If the distance is greater than 200m, the picture is rejected        
+      this.distance = haversine(this.start, this.end)     
       if (this.distance < 0.2) {
         return true}
       else {return false}
     },
-    checkImageLabels () {
-      
-      this.picToCheck = this.image.dataUrl.replace(/^data:image\/[a-z]+;base64,/, "");
-      
+    /*
+    Process the picture with Google Visions API and retreive its labels
+    */
+    checkImageLabels () {      
+      this.picToCheck = this.image.dataUrl.replace(/^data:image\/[a-z]+;base64,/, "");      
       let axiosConfig = {
         "requests" : [{
           "features": [{
@@ -73,9 +76,9 @@ export default {
           }
         }]
       }
+      // POST the picture to the Google Vision API
       axios.post(`https://vision.googleapis.com/v1/images:annotate?key=${this.apiKey}`, axiosConfig)
-        .then(response => {
-          console.log(response)   
+        .then(response => {            
           this.storeState.labels = []      
           let slicedLabelArray = response.data.responses[0].labelAnnotations.slice(0,-1)
           slicedLabelArray.forEach(function(label) {
@@ -86,6 +89,7 @@ export default {
           store.setPreloader(0)                         
         })        
     },
+    // Convert the base64 picture into a jpeg picture
     imageConversion () {
       var byteString = atob(this.image.dataUrl.split(',')[1]);
       var ab = new ArrayBuffer(byteString.length);

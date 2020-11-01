@@ -52,23 +52,28 @@ export default {
     }    
   },   
   methods: {
+    // Login function that redirest to login page
     login() {
       window.localStorage.setItem("username", "toto")     
       window.location.replace(baseUrl + "/accounts/login/")
     },
+    // Logout function that redirest to logout page
     logout() {
       window.localStorage.removeItem("username");         
       window.location.replace(baseUrl + "/accounts/logout/")
-    },   
+    },
+    /*
+      Function triggered when a place is selected in the autocomplete.
+      It retrieves from the selected palace : name, maps_id, adress, 
+      opening_hours, phone, website, type, its lattitude and longitude.
+    */
     getAddressData(addressData, placeResultData) {
-      this.placeResultData = placeResultData;
-      console.log(this.placeResultData)    
+      this.placeResultData = placeResultData;          
       this.lat = this.placeResultData.geometry.location.lat(),
-      this.lng = this.placeResultData.geometry.location.lng(),
-      console.log(this.lat, this.lng)      
+      this.lng = this.placeResultData.geometry.location.lng(),         
       store.setRestLat(this.lat)      
       store.setRestLng(this.lng)
-      
+      // check if the place is a restaurant or a bar
       if (this.placeResultData.types.includes('restaurant') ||
           this.placeResultData.types.includes('bar') ) 
         { if (this.placeResultData.opening_hours == undefined) {        
@@ -77,7 +82,7 @@ export default {
                                 "vendredi: Non renseigné", "samedi: Non renseigné",
                                 "dimanche: Non renseigné"] 
         } else { this.opening_hours = this.placeResultData.opening_hours.weekday_text}
-
+        // redirects to the Rest_Reviews view with the retrieved data as params
         this.$router.push({ name: "rest_reviews", 
                   params: { maps: this.placeResultData.place_id,
                             name: this.placeResultData.name,
@@ -89,7 +94,7 @@ export default {
                             restLat: this.lat,
                             restLng: this.lng}})      
         this.$refs.inputField.$refs.autocomplete.value='';   
-
+      // if place nor a restaurant or a bar redirects to the Notarest view
       } else { this.$router.push({ name: "notarest" });
               this.$refs.inputField.$refs.autocomplete.value='';}
     }

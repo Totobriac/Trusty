@@ -34,6 +34,7 @@ export default {
    }
   },
   methods: {
+    // function to delete piture just after uploading them
     deleteMe(picture) {     
       let endpoint = picture.apiUrl + picture.id +"/"
       let method = "DELETE";

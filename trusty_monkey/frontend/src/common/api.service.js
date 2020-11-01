@@ -12,7 +12,6 @@ function handleResponse(response) {
   }
 }
 
-
 function apiService(endpoint, method, data) {
   const config = {
     method: method || "GET",    

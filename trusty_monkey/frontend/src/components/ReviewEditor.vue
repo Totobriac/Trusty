@@ -82,7 +82,8 @@ export default {
           }
         };
 
-        if (this.upUrl == 0) {        
+        if (this.upUrl == 0) {
+          // Check if the selected picture correspond to the right category    
           if (this.storeState.labels.includes ('Food')) {
                 this.endpoint = "starter_pic"                
                 this.storeState.upError = null}
@@ -90,20 +91,23 @@ export default {
                     this.endpoint = false,
                     store.setShowCatBut()}
         } else if (this.upUrl == 1) {
+          // Check if the selected picture correspond to the right category
           if (this.storeState.labels.includes ('Food')) {
                 this.endpoint = "main_pic"                
                 this.storeState.upError = null}
               else {store.setUpError("Ceci n'est pas la photo d'un plat"),                    
                     this.endpoint = false,
                     store.setShowCatBut()}
-        } else if (this.upUrl == 2) {          
-              if (this.storeState.labels.includes ('Dessert')) {
+        } else if (this.upUrl == 2) {
+          // Check if the selected picture correspond to the right category          
+          if (this.storeState.labels.includes ('Dessert')) {
                 this.endpoint = "dessert_pic"                
                 this.storeState.upError = null}
               else {store.setUpError("Ceci n'est pas la photo d'un dessert"),                    
                     this.endpoint = false,
                     store.setShowCatBut()}
-        } else if (this.upUrl == 3) {          
+        } else if (this.upUrl == 3) {
+          // Check if the selected picture correspond to the right category          
               if (this.storeState.labels.includes ('Text')) {
                 this.endpoint = "menu_pic"                
                 this.storeState.upError = null}
@@ -111,6 +115,7 @@ export default {
                     this.endpoint = false,
                     store.setShowCatBut()}
         } else if (this.upUrl == 4) {
+          // Check if the selected picture correspond to the right category
           if (this.storeState.labels.includes ('Building')) {
                 this.endpoint = "outside_pic"                
                 this.storeState.upError = null}
@@ -118,6 +123,7 @@ export default {
                     this.endpoint = false,
                     store.setShowCatBut()}
         } else if (this.upUrl == 5) {
+          // Check if the selected picture correspond to the right category
           if (this.storeState.labels.includes ('Restaurant')) {
                 this.endpoint = "inside_pic"                
                 this.storeState.upError = null}
@@ -130,6 +136,7 @@ export default {
           console.log(this.endpoint)
           fd.append('picture_1', this.selectedFile)
           fd.append('restaurant_review', this.id)
+          // POST the selected picture to the right endpoint
           axios.post(`https://trustymonkey.herokuapp.com/api/${this.endpoint}/`, fd, axiosConfig)
             .then(res => {                                  
               this.upUrl = null              
@@ -145,14 +152,15 @@ export default {
         }
       } 
     },
+    // Redirects to the Home view
     goHome() {
       this.$router.push({name: 'home'})           
     },
+    // Get the selected endpoint
     setUpUrl() {
       this.upUrlArray.push(this.upex)
       if (this.upUrlArray.length > 1 && this.upUrlArray.length % 2 == 0) {
-        this.upUrl = this.upUrlArray[this.upUrlArray.length - 2]
-        console.log(this.upUrl)
+        this.upUrl = this.upUrlArray[this.upUrlArray.length - 2]        
         store.setShowCatBut()
         this.storeState.upError = null
       }
