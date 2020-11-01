@@ -365,7 +365,7 @@ class AllReviewPicturesAPIView(FlatMultipleModelAPIView):
                 restaurant_review=kwarg_review),
              'serializer_class': serializers.DessertPicsSerializer},
             {'queryset': models.MenuPic.objects.filter(
-                restauraall the reviewsnt_review=kwarg_review),
+                reviewsnt_review=kwarg_review),
              'serializer_class': serializers.MenuPicsSerializer},
             {'queryset': models.OutsidePic.objects.filter(
                 restaurant_review=kwarg_review),
