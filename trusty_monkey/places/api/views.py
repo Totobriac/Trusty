@@ -333,7 +333,7 @@ class AllSingleRestPicturesAPIView(FlatMultipleModelAPIView):
                 restaurant_review__maps=kwarg_maps),
              'serializer_class': serializers.DessertPicsSerializer},
             {'queryset': models.MenuPic.objects.filter(
-                restauraall the reviewsnt_review__maps=kwarg_maps),
+                restaurant_review__maps=kwarg_maps),
              'serializer_class': serializers.MenuPicsSerializer},
             {'queryset': models.OutsidePic.objects.filter(
                 restaurant_review__maps=kwarg_maps),
