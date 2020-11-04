@@ -6,6 +6,7 @@
         :className="['fileinput', { 'fileinput--loaded': hasImage }]"
         capture="environment"
         :debug="1"
+        :maxWidth="512"
         :quality="0.9"
         doNotResize="gif"
         :autoRotate="false"
@@ -65,11 +66,14 @@ export default {
             */                              
             this.imageConversion()                    
           } else {store.setUpError("Votre photo ne semble pas avoir été prise dans ce restaurant")
-                  store.setShowCatBut()}
+                  store.setShowCatBut()
+                  store.setPreloader(0)}
         } else {store.setUpError("Avez vous activé la géolocalisation sur votre téléphone?")
-                store.setShowCatBut()}
+                store.setShowCatBut()
+                store.setPreloader(0)}
       } else {store.setUpError("Avez vous activé la géolocalisation sur votre téléphone?")
-              store.setShowCatBut()}      
+              store.setShowCatBut()
+              store.setPreloader(0)}      
     },   
   },
   components: {
