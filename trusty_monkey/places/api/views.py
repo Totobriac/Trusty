@@ -4,8 +4,8 @@ from places.api.permissions import (IsAuthorOrReadOnly,
                                     IsOwnReviewOrReadOnly)
 from places import models
 from . import serializers
-from drf_multiple_model.views import (FlatMultipleModelAPIView,
-                                    ObjectMultipleModelAPIView)
+from drf_multiple_model.views import FlatMultipleModelAPIView
+                                    
 from rest_framework.pagination import CursorPagination
 
 
@@ -53,7 +53,7 @@ class RestaurantReviewListAPIView(generics.ListAPIView):
 
 
 """
-Retrieve all the starter pictures 
+Retrieve all the starter pictures
 """
 class StarterPicsViewset(viewsets.ModelViewSet):
     queryset = models.StarterPic.objects.all()
@@ -62,7 +62,7 @@ class StarterPicsViewset(viewsets.ModelViewSet):
 
 
 """
-Retrieve all the main course pictures 
+Retrieve all the main course pictures
 """
 class MainPicsViewset(viewsets.ModelViewSet):
     queryset = models.MainPic.objects.all()
@@ -71,7 +71,7 @@ class MainPicsViewset(viewsets.ModelViewSet):
 
 
 """
-Retrieve all the dessert pictures 
+Retrieve all the dessert pictures
 """
 class DessertPicsViewset(viewsets.ModelViewSet):
     queryset = models.DessertPic.objects.all()
@@ -80,7 +80,7 @@ class DessertPicsViewset(viewsets.ModelViewSet):
 
 
 """
-Retrieve all the menu pictures 
+Retrieve all the menu pictures
 """
 class MenuPicsViewset(viewsets.ModelViewSet):
     queryset = models.MenuPic.objects.all()
@@ -89,7 +89,7 @@ class MenuPicsViewset(viewsets.ModelViewSet):
 
 
 """
-Retrieve all the utside pictures 
+Retrieve all the utside pictures
 """
 class OutsidePicsViewset(viewsets.ModelViewSet):
     queryset = models.OutsidePic.objects.all()
@@ -98,7 +98,7 @@ class OutsidePicsViewset(viewsets.ModelViewSet):
 
 
 """
-Retrieve all the inside pictures 
+Retrieve all the inside pictures
 """
 class InsidePicsViewset(viewsets.ModelViewSet):
     queryset = models.InsidePic.objects.all()
@@ -325,7 +325,7 @@ class AllSingleRestPicturesAPIView(FlatMultipleModelAPIView):
         querylist = (
             {'queryset': models.StarterPic.objects.filter(
                 restaurant_review__maps=kwarg_maps),
-             'serializeall the reviewsr_class': serializers.StarterPicsSerializer},
+             'serializer_class': serializers.StarterPicsSerializer},
             {'queryset': models.MainPic.objects.filter(
                 restaurant_review__maps=kwarg_maps),
              'serializer_class': serializers.MainPicsSerializer},
@@ -365,7 +365,7 @@ class AllReviewPicturesAPIView(FlatMultipleModelAPIView):
                 restaurant_review=kwarg_review),
              'serializer_class': serializers.DessertPicsSerializer},
             {'queryset': models.MenuPic.objects.filter(
-                reviewsnt_review=kwarg_review),
+                restaurant_review=kwarg_review),
              'serializer_class': serializers.MenuPicsSerializer},
             {'queryset': models.OutsidePic.objects.filter(
                 restaurant_review=kwarg_review),
