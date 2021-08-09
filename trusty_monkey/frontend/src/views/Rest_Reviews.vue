@@ -175,6 +175,7 @@ export default {
   computed: {
     // Generate a map with Google Maps API using the restautant lng & lat
     mapUrl() {
+      console.log(this.$route.params.restLat, this.$route.params.restLng)
       const url = "https://maps.googleapis.com/maps/api/staticmap";
       const params = new URLSearchParams({
         center: `${this.$route.params.restLat},${this.$route.params.restLng}`,
