@@ -53,7 +53,8 @@ export default {
         longitude: this.lng
       }
       // If the distance is greater than 200m, the picture is rejected        
-      this.distance = haversine(this.start, this.end)     
+      this.distance = haversine(this.start, this.end)
+      console.log(this.distance)
       if (this.distance < 0.2) {
         return true}
       else {return false}
