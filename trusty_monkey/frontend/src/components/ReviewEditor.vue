@@ -18,7 +18,7 @@
     <div class="btnRow d-flex flex-row justify-content-around">
       <div class="mt-3" v-for="(buttonPic, index) in buttonPics" :key="buttonPic">
 
-        <label for="fileInput" @click="upex=index, setUpUrl(), this.storeState.upError = null, store.setPreloader(0)"
+        <label for="fileInput" @click="upex=index, setUpUrl(), store.setPreloader(0)"
               class="catBtn border border-success rounded p-2"
         >{{ buttonPic }} <Resize/> </label>
       </div>
