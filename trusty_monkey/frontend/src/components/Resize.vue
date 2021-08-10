@@ -48,9 +48,11 @@ export default {
       this.image = output;
       // Check if picture as exif data
       if (this.image.exif != null) {
+        console.log("has some exif!!")
         // Check if picture as exif GPS data    
         if (this.image.exif.GPSLatitude) {
           // Calculate the picture CPS coordinates
+          console.log("has some GPS!!")
           this.calculateCoordPicture()
           // Check if picture coordinates are the same as the selected restaurant       
           this.checkIfPicInRange()
